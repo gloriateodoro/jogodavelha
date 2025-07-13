@@ -59,31 +59,39 @@ export function Board({ xIsNext, squares, onPlay }) {
 
     return (
         <div className="flex flex-col items-center justify-center">
-            <div className="next-player-status">
+            <div className="next-player-status" role="status" aria-live="polite">
                 {status}
             </div>
-            <div className="board-row">
-                <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-                <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-                <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-            </div>
-            <div className="board-row">
-                <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-                <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-                <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-            </div>
-            <div className="board-row">
-                <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-                <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-                <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+            <div 
+                role="grid" 
+                aria-label="Tabuleiro do jogo da velha"
+                className="board-container"
+            >
+                <div className="board-row" role="row">
+                    <Square value={squares[0]} onSquareClick={() => handleClick(0)} position={0} />
+                    <Square value={squares[1]} onSquareClick={() => handleClick(1)} position={1} />
+                    <Square value={squares[2]} onSquareClick={() => handleClick(2)} position={2} />
+                </div>
+                <div className="board-row" role="row">
+                    <Square value={squares[3]} onSquareClick={() => handleClick(3)} position={3} />
+                    <Square value={squares[4]} onSquareClick={() => handleClick(4)} position={4} />
+                    <Square value={squares[5]} onSquareClick={() => handleClick(5)} position={5} />
+                </div>
+                <div className="board-row" role="row">
+                    <Square value={squares[6]} onSquareClick={() => handleClick(6)} position={6} />
+                    <Square value={squares[7]} onSquareClick={() => handleClick(7)} position={7} />
+                    <Square value={squares[8]} onSquareClick={() => handleClick(8)} position={8} />
+                </div>
             </div>
             
             <Modal 
                 isOpen={showModal} 
                 onClose={() => setShowModal(false)}
+                title="Fim de Jogo"
+                description={`O jogador ${currentWinner} venceu o jogo da velha!`}
             >
                 <div className="text-center">
-                    <img src="/winner.png" alt="Winner" className="mx-auto mb-6 w-40 h-40" />
+                    <img src="/winner.png" alt="Troféu do vencedor" className="mx-auto mb-6 w-40 h-40" />
                     <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--color-success)' }}>
                         Parabéns!
                     </h2>

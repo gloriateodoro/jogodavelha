@@ -1,6 +1,6 @@
 # Sistema de Cores - Jogo da Velha
 
-Este documento descreve o sistema de cores padronizado usado na aplicação.
+Estedocumento descreve o sistema de cores padronizado usado na aplicação.
 
 ## Variáveis de Cores
 
